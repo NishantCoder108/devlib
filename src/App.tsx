@@ -1,11 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
 import "./App.css";
-import AppNavbar from "./components/AppNavbar";
 import Layout from "./components/layouts/Layout";
 import Login from "./components/auth/Login";
 import BooksLibrary from "./components/BooksLibrary";
 import RequiredAuth from "./components/auth/RequiredAuth";
+import Signup from "./components/auth/Signup";
 
 function App() {
     return (
@@ -13,6 +13,7 @@ function App() {
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route
                         path="/bookslibrary"
                         element={
