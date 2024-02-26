@@ -1,0 +1,17 @@
+import React from "react";
+import { Navigate, useLocation } from "react-router-dom";
+
+const RequiredAuth = ({ children }: { children: JSX.Element }) => {
+    const auth = false;
+    const location = useLocation();
+
+    console.log({ location });
+
+    if (!auth) {
+        return <Navigate to="/" state={{ from: location }} replace />;
+    }
+
+    return children;
+};
+
+export default RequiredAuth;
