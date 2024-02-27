@@ -1,13 +1,18 @@
-import React from "react";
+import { getAuth } from "firebase/auth";
 import { Navigate, useLocation } from "react-router-dom";
 
 const RequiredAuth = ({ children }: { children: JSX.Element }) => {
-    const auth = false;
+    const auth = getAuth();
+
+    const user = auth.currentUser;
+    const refreshToken = user?.refreshToken;
+
     const location = useLocation();
 
-    console.log({ location });
+    // console.log({ location });
+    // console.log({ user });
 
-    if (!auth) {
+    if (!refreshToken) {
         return <Navigate to="/" state={{ from: location }} replace />;
     }
 
