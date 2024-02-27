@@ -7,7 +7,7 @@ import { IPassword } from "../icons/IPassword";
 import { ILogin } from "../icons/ILogin";
 import Logo from "../../assets/svg/logo.svg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import app, { auth } from "../../configs/firebase";
+import { auth } from "../../configs/firebase";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
 type FormData = {
