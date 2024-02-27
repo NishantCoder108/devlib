@@ -1,11 +1,13 @@
-import { Button, Image, Input } from "@nextui-org/react";
-import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button, Input } from "@nextui-org/react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { PersonIcon } from "../icons/Person";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { IPassword } from "../icons/IPassword";
 import { ILogin } from "../icons/ILogin";
 import Logo from "../../assets/svg/logo.svg";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../configs/firebase";
 
 type FormData = {
     email: string;
@@ -16,40 +18,51 @@ const Login = () => {
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
     } = useForm<FormData>();
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
+    const [loginErr, setLoginErr] = useState("");
 
-    // console.log("Location in login", location);
-    // const from = location.state?.from?.pathname || "/";
+    // const currentLocation = location.state?.from?.pathname || "/";
 
-    // function handleSubmit1(event: React.FormEvent<HTMLFormElement>) {
-    //     event.preventDefault();
+    const onSubmit = handleSubmit(async (data) => {
+        const { email, password } = data;
 
-    //     const formData = new FormData(event.currentTarget);
-    //     const username = formData.get("username") as string;
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
 
-    //     console.log({ username });
-    //     console.log("2", { from });
+            console.log({ user });
+            reset();
+            setLoginErr("");
+            navigate("/bookslibrary", { replace: true });
+        } catch (error) {
+            if (error instanceof Error) {
+                const errorMessageMatch = error.message.match(
+                    /Firebase: Error \((.*)\)/
+                );
+                const errorMessage = errorMessageMatch
+                    ? errorMessageMatch[1]
+                    : "Unknown error";
 
-    //     //logic to navigate after login
-    //     navigate(from, { replace: true });
-    // }
-    const onSubmit = handleSubmit((data) => console.log("sdkfj", data));
+                console.log("Actual error message:", errorMessage);
+                setLoginErr(errorMessage.toUpperCase());
+            }
+        }
+    });
 
-    console.log(watch("email")); // watch input value by passing the name of it
+    console.log("Form Errors: ", errors);
 
     return (
         <div className="flex items-center justify-center ">
             <div className="h-[90vh] w-80 pt-28">
                 <div className="flex flex-col items-center pb-16">
-                    <img
-                        // width={240}
-                        alt="devlib logo"
-                        src={Logo}
-                    />
+                    <img alt="devlib logo" src={Logo} />
                 </div>
                 <form onSubmit={onSubmit}>
                     <div className="flex flex-col gap-6 ">
@@ -97,6 +110,9 @@ const Login = () => {
                                 <IPassword className="text-2xl text-default-400  pointer-events-none  flex-shrink-0" />
                             }
                         />
+                        <p className="text-[.5rem] font-semibold text-red-700 h-1">
+                            {loginErr && loginErr}
+                        </p>
                         <Button
                             type="submit"
                             fullWidth
@@ -105,18 +121,17 @@ const Login = () => {
                             endContent={<ILogin />}
                         >
                             Login In
-                        </Button>{" "}
+                        </Button>
                     </div>
                 </form>
 
                 <div className="flex items-center justify-between  text-small font-semibold mt-3">
                     <p className="text-sm ">
-                        New User?{" "}
+                        New User?
                         <Link
                             to="/signup"
                             className="hover:underline decoration-1"
                         >
-                            {" "}
                             Sign Up
                         </Link>
                     </p>

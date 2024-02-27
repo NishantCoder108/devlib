@@ -19,18 +19,17 @@ const Signup = () => {
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: { errors },
     } = useForm<FormData>();
     const navigate = useNavigate();
-
+    const analytics = getAnalytics();
     const [signupErr, setSignupErr] = useState("");
 
     const onSubmit = handleSubmit(async (data) => {
         const { email, password } = data;
         reset();
-        const analytics = getAnalytics();
+
         logEvent(analytics, "signup_button_clicked", {});
         try {
             const userCredential = await createUserWithEmailAndPassword(
@@ -42,7 +41,6 @@ const Signup = () => {
 
             navigate("/", { replace: true });
         } catch (error) {
-            watch("email", "");
             if (error instanceof Error) {
                 const errorMessageMatch = error.message.match(
                     /Firebase: Error \((.*)\)/
@@ -57,7 +55,6 @@ const Signup = () => {
         }
     });
 
-    console.log("Watching Email", watch("email"));
     console.log("Form Errors: ", errors);
 
     return (
