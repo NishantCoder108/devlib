@@ -7,7 +7,8 @@ import { IPassword } from "../icons/IPassword";
 import { ILogin } from "../icons/ILogin";
 import Logo from "../../assets/svg/logo.svg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../configs/firebase";
+import app, { auth } from "../../configs/firebase";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 type FormData = {
     email: string;
@@ -29,6 +30,8 @@ const Signup = () => {
     const onSubmit = handleSubmit(async (data) => {
         const { email, password } = data;
         reset();
+        const analytics = getAnalytics();
+        logEvent(analytics, "signup_button_clicked", {});
         try {
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
