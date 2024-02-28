@@ -1,21 +1,15 @@
-import { getAuth } from "firebase/auth";
 import { Navigate, useLocation } from "react-router-dom";
+import { useAppSelector } from "../../app/hooks";
 
 const RequiredAuth = ({ children }: { children: JSX.Element }) => {
-    const auth = getAuth();
-
-    const user = auth.currentUser;
-    const refreshToken = user?.refreshToken;
+    const { accessToken } = useAppSelector((state) => state.auth);
 
     const location = useLocation();
 
-    // console.log({ location });
-    // console.log({ user });
-
-    if (!refreshToken) {
+    console.log("RequiredAuth", { accessToken });
+    if (!accessToken) {
         return <Navigate to="/" state={{ from: location }} replace />;
     }
-
     return children;
 };
 

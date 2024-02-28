@@ -8,6 +8,8 @@ import { ILogin } from "../icons/ILogin";
 import Logo from "../../assets/svg/logo.svg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../configs/firebase";
+import { signInUser } from "../../features/authSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 type FormData = {
     email: string;
@@ -22,7 +24,8 @@ const Login = () => {
         formState: { errors },
     } = useForm<FormData>();
     const navigate = useNavigate();
-    // const location = useLocation();
+
+    const dispatch = useAppDispatch();
     const [loginErr, setLoginErr] = useState("");
 
     // const currentLocation = location.state?.from?.pathname || "/";
@@ -31,13 +34,24 @@ const Login = () => {
         const { email, password } = data;
 
         try {
-            const user = await signInWithEmailAndPassword(
+            const { user } = await signInWithEmailAndPassword(
                 auth,
                 email,
                 password
             );
 
-            console.log({ user });
+            console.log("Login user ", user);
+
+            const userDetails = {
+                email: user.email,
+                accessToken: await user.getIdToken(),
+                emailVerified: user.emailVerified,
+                uid: user.uid,
+            };
+            console.log({ userDetails });
+
+            dispatch(signInUser(userDetails));
+
             reset();
             setLoginErr("");
             navigate("/bookslibrary", { replace: true });
