@@ -35,6 +35,9 @@ body {
     /* min-width: 320px; */
     min-height: 100vh;
     background-color: #f6f5f1;
+    font-family: "Roboto", sans-serif;
+    /* font-weight: 100;
+    font-style: normal; */
 }
 
 /*
