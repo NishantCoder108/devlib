@@ -1,29 +1,51 @@
 import { Button } from "@nextui-org/react";
-import { signOut } from "firebase/auth";
-import { auth } from "../configs/firebase";
-import { logoutUser } from "../features/authSlice";
-import { useAppDispatch } from "../app/hooks";
-import { useNavigate } from "react-router-dom";
 
-const BooksLibrary = () => {
+import AppNavbar from "./AppNavbar";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import BooksCard from "./BooksCard";
+import { useEffect, useState } from "react";
+import { BookState, addBooks } from "../features/bookSlice";
+
+interface IQuery {
+    query: string;
+}
+const BooksLibrary = ({ query }: IQuery) => {
+    // const allBooks = useAppSelector((state) => state.books.allBooks);
+    // console.log("All books in books library", allBooks);
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        signOut(auth)
-            .then(() => {
-                dispatch(logoutUser());
-                navigate("/", { replace: true });
-            })
-            .catch((error) => {
-                console.log("Logout Failed Error :", error);
-            });
+    const [books, setBooks] = useState<BookState[]>([]);
+    const fetchBooks = async (query: string) => {
+        try {
+            const booksList = await fetch(
+                `https://www.dbooks.org/api/search/${query}`
+            );
+            const json = await booksList.json();
+
+            console.log("res_books_list", json);
+            setBooks(json.books);
+            dispatch(addBooks(json.books));
+        } catch (error) {
+            console.log(error);
+        }
     };
+    useEffect(() => {
+        fetchBooks(query);
+    }, [query]);
+    console.log("Books library books ", books);
+    // console.log("Books library all books ", allBooks);
+
+    // if (!books) {
+    //     return <p>Loading...</p>;
+    // }
     return (
-        <div className="text-red-700">
-            <p>Books library</p>
-            <Button onClick={handleLogout}> Logout</Button>
-        </div>
+        <>
+            <div className="flex px-6 gap-4 items-center justify-between flex-wrap">
+                {books.length > 0
+                    ? books.map((item) => <BooksCard {...item} />)
+                    : "Not found"}
+            </div>
+        </>
     );
 };
 

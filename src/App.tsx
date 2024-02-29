@@ -6,6 +6,7 @@ import Login from "./components/auth/Login";
 import BooksLibrary from "./components/BooksLibrary";
 import RequiredAuth from "./components/auth/RequiredAuth";
 import Signup from "./components/auth/Signup";
+import Homepage from "./components/Homepage";
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
                         path="/bookslibrary"
                         element={
                             <RequiredAuth>
-                                <BooksLibrary />
+                                <Homepage />
                             </RequiredAuth>
                         }
                     />

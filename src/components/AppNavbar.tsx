@@ -15,12 +15,15 @@ import { logoutUser } from "../features/authSlice";
 import { useAppDispatch } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { addBooks } from "../features/bookSlice";
 
 interface ISearchData {
     searchText: string;
 }
-
-export default function AppNavbar() {
+interface AppNavbarProps {
+    searchText: (data: string) => void;
+}
+export default function AppNavbar({ searchText }: AppNavbarProps) {
     const {
         register,
         handleSubmit,
@@ -40,12 +43,27 @@ export default function AppNavbar() {
                 console.log("Logout Failed Error :", error);
             });
     };
+    const fetchBooks = async (query: ISearchData) => {
+        try {
+            const booksList = await fetch(
+                `https://www.dbooks.org/api/search/${query}`
+            );
+            const json = await booksList.json();
 
+            console.log("res_books_list", json);
+            dispatch(addBooks(json.books));
+        } catch (error) {
+            console.log(error);
+        }
+    };
     const handleSearchText = handleSubmit((data) => {
         console.log("search data", data);
-        reset();
+
+        searchText(data.searchText);
+        // fetchBooks(data);
     });
 
+    console.log(errors);
     return (
         <Navbar disableAnimation maxWidth="full" className="bg-transparent">
             <NavbarContent className="" justify="center">
