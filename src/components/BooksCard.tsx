@@ -53,9 +53,6 @@ const BooksCard = (props: BookState) => {
                                 aria-label="download books"
                                 className="bg-transparent"
                                 radius="full"
-                                // onClick={() =>
-                                //     console.log("Download btn pressed")
-                                // }
                                 href={download}
                                 as={Link}
                                 download={true}

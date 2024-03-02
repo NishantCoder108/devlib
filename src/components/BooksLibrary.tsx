@@ -1,9 +1,5 @@
-// import { useAppDispatch } from "../app/hooks";
 import useSearchBooks from "../configs/hooks/useSearchBooks";
 import BooksCard from "./BooksCard";
-// import { useEffect, useState } from "react";
-// import { BookState, addBooks } from "../features/bookSlice";
-// import { Search_BOOKS_API } from "../constants";
 
 interface IQuery {
     query: string;
