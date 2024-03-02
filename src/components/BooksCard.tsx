@@ -1,5 +1,5 @@
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import React from "react";
+import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import DownloadBtn from "../assets/svg/download.svg";
 import { BookState } from "../features/bookSlice";
 
 const BooksCard = (props: BookState) => {
@@ -30,6 +30,22 @@ const BooksCard = (props: BookState) => {
                 <p className="text-default-500 overflow-hidden whitespace-nowrap overflow-ellipsis max-w-full">
                     {authors}
                 </p>
+                <div className="flex items-center justify-between w-full">
+                    <p>270 Pages</p>
+                    <Button
+                        isIconOnly
+                        aria-label="download books"
+                        className="bg-transparent"
+                        radius="full"
+                        onClick={() => console.log("Download btn pressed")}
+                    >
+                        <img
+                            alt="download books"
+                            src={DownloadBtn}
+                            className="w-4"
+                        />
+                    </Button>
+                </div>
             </CardFooter>
         </Card>
     );
