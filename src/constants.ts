@@ -12,3 +12,7 @@ export const FIREBASE_MEASUREMENTID = import.meta.env
 
 // Development Mode
 export const DEVMODE = import.meta.env.DEV;
+
+// Books Api
+export const RECENT_BOOKS_API = import.meta.env.VITE_BOOKS_API + "/api/recent";
+export const Search_BOOKS_API = import.meta.env.VITE_BOOKS_API + "/api/search";
