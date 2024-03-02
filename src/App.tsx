@@ -3,7 +3,6 @@ import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 import Layout from "./components/layouts/Layout";
 import Login from "./components/auth/Login";
-import BooksLibrary from "./components/BooksLibrary";
 import RequiredAuth from "./components/auth/RequiredAuth";
 import Signup from "./components/auth/Signup";
 import Homepage from "./components/Homepage";

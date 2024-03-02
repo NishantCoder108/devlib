@@ -1,6 +1,7 @@
 import Logo from "../assets/svg/logo.svg";
 import Logout from "../assets/svg/logout.svg";
-import Ai from "../assets/svg/ai.svg";
+import SearchIcon from "../assets/svg/search.svg";
+
 import {
     Navbar,
     NavbarBrand,
@@ -8,6 +9,7 @@ import {
     NavbarItem,
     Button,
     Input,
+    Tooltip,
 } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../configs/firebase";
@@ -15,6 +17,7 @@ import { logoutUser } from "../features/authSlice";
 import { useAppDispatch } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import SearchByAi from "./SearchByAi";
 
 interface ISearchData {
     searchText: string;
@@ -67,12 +70,12 @@ export default function AppNavbar({ searchText }: AppNavbarProps) {
                         autoComplete="off"
                         classNames={{
                             base: "w-full h-10 ",
-                            mainWrapper: "h-full w-[46vw] ",
+                            mainWrapper: "h-full w-[30vw] ",
                             input: "text-small px-2",
                             inputWrapper:
                                 "h-full font-normal text-default-500 bg-white dark:bg-default-500/20 rounded-l-full",
                         }}
-                        placeholder="Search your programming books with AI, e.g., Can you suggest JavaScript-related books? ..."
+                        placeholder={`Search with AI, for example: "Suggest JavaScript books?"`}
                         size="sm"
                         type="search"
                         fullWidth={true}
@@ -83,20 +86,27 @@ export default function AppNavbar({ searchText }: AppNavbarProps) {
                         className="rounded-r-full bg-white border border-l-1 px border-gray-50 "
                         isIconOnly
                     >
-                        <img src={Ai} alt="ai logo" className="w-4" />
+                        <img src={SearchIcon} alt="ai logo" className="w-4" />
                     </Button>
                 </form>
-
+                <SearchByAi />
                 <NavbarItem>
-                    <Button
-                        isIconOnly
-                        aria-label="logout"
-                        className="bg-transparent"
-                        radius="full"
-                        onClick={handleLogout}
+                    <Tooltip
+                        placement={"bottom"}
+                        content={"Logout"}
+                        offset={-3}
+                        showArrow
                     >
-                        <img src={Logout} alt="logout" className="w-4" />
-                    </Button>
+                        <Button
+                            isIconOnly
+                            aria-label="logout"
+                            className="bg-transparent"
+                            radius="full"
+                            onClick={handleLogout}
+                        >
+                            <img src={Logout} alt="logout" className="w-4" />
+                        </Button>
+                    </Tooltip>
                 </NavbarItem>
             </NavbarContent>
         </Navbar>
