@@ -5,6 +5,7 @@ import {
     CardFooter,
     Image,
     Link,
+    Tooltip,
 } from "@nextui-org/react";
 import DownloadBtn from "../assets/svg/download.svg";
 import { BookState } from "../features/bookSlice";
@@ -48,21 +49,28 @@ const BooksCard = (props: BookState) => {
                         </p>
                         <div className="flex items-center justify-between w-full">
                             <p>{pages || 0} Pages</p>
-                            <Button
-                                isIconOnly
-                                aria-label="download books"
-                                className="bg-transparent"
-                                radius="full"
-                                href={download}
-                                as={Link}
-                                download={true}
+                            <Tooltip
+                                placement={"bottom"}
+                                offset={-3}
+                                showArrow
+                                content="Download"
                             >
-                                <img
-                                    alt="download books"
-                                    src={DownloadBtn}
-                                    className="w-4"
-                                />
-                            </Button>
+                                <Button
+                                    isIconOnly
+                                    aria-label="download books"
+                                    className="bg-transparent"
+                                    radius="full"
+                                    href={download}
+                                    as={Link}
+                                    download={true}
+                                >
+                                    <img
+                                        alt="download books"
+                                        src={DownloadBtn}
+                                        className="w-4"
+                                    />
+                                </Button>
+                            </Tooltip>
                         </div>
                     </CardFooter>
                 </Card>
