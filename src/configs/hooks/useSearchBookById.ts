@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Search_BOOK_By_ID } from "../../constants";
 
 const useSearchBookById = (bookId: string) => {
-    const [bookDetails, setBookDetails] = useState([]);
+    const [bookDetails, setBookDetails] = useState({});
 
     const fetchBookById = async (bookId: string) => {
         const data = await fetch(Search_BOOK_By_ID + "/" + bookId);
@@ -17,7 +17,7 @@ const useSearchBookById = (bookId: string) => {
         fetchBookById(bookId);
     }, [bookId]);
 
-    return bookDetails;
+    return bookDetails ? bookDetails : null;
 };
 
 export default useSearchBookById;

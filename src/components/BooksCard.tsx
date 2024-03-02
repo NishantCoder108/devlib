@@ -1,53 +1,76 @@
-import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import {
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    Image,
+    Link,
+} from "@nextui-org/react";
 import DownloadBtn from "../assets/svg/download.svg";
 import { BookState } from "../features/bookSlice";
+import useSearchBookById from "../configs/hooks/useSearchBookById";
 
 const BooksCard = (props: BookState) => {
-    console.log("Bookcard ", props);
+    console.log("Bookcard Props:- ", props);
 
-    const { authors, id, image, title } = props;
+    const book = useSearchBookById(props.id) as BookState;
+
+    if (!book.image) return;
+
+    const { authors, image, pages, title, download, id } = book;
+
+    console.log({ book });
 
     return (
-        <Card
-            shadow="sm"
-            key={id}
-            // isHoverable={true}
-            className="w-[250px] rounded"
-            onPress={() => console.log("item pressed")}
-        >
-            <CardBody className="overflow-visible p-0 rounded-none">
-                <Image
+        <>
+            {book && (
+                <Card
                     shadow="sm"
-                    radius="lg"
-                    width="100%"
-                    alt={title}
-                    className="w-[250px] object-cover h-[300px] rounded-none"
-                    src={image}
-                />
-            </CardBody>
-            <CardFooter className="text-small flex-col justify-start items-start text-left">
-                <p className="font-semibold ">{title}</p>
-                <p className="text-default-500 overflow-hidden whitespace-nowrap overflow-ellipsis max-w-full">
-                    {authors}
-                </p>
-                <div className="flex items-center justify-between w-full">
-                    <p>270 Pages</p>
-                    <Button
-                        isIconOnly
-                        aria-label="download books"
-                        className="bg-transparent"
-                        radius="full"
-                        onClick={() => console.log("Download btn pressed")}
-                    >
-                        <img
-                            alt="download books"
-                            src={DownloadBtn}
-                            className="w-4"
+                    key={id}
+                    // isHoverable={true}
+                    className="w-[250px] rounded"
+                    onPress={() => console.log("item pressed")}
+                >
+                    <CardBody className="overflow-visible p-0 rounded-none">
+                        <Image
+                            shadow="sm"
+                            radius="lg"
+                            width="100%"
+                            alt={title}
+                            className="w-[250px] object-cover h-[300px] rounded-none"
+                            src={image}
                         />
-                    </Button>
-                </div>
-            </CardFooter>
-        </Card>
+                    </CardBody>
+                    <CardFooter className="text-small flex-col justify-start items-start text-left">
+                        <p className="font-semibold ">{title}</p>
+                        <p className="text-default-500 overflow-hidden whitespace-nowrap overflow-ellipsis max-w-full">
+                            {authors}
+                        </p>
+                        <div className="flex items-center justify-between w-full">
+                            <p>{pages || 0} Pages</p>
+                            <Button
+                                isIconOnly
+                                aria-label="download books"
+                                className="bg-transparent"
+                                radius="full"
+                                // onClick={() =>
+                                //     console.log("Download btn pressed")
+                                // }
+                                href={download}
+                                as={Link}
+                                download={true}
+                            >
+                                <img
+                                    alt="download books"
+                                    src={DownloadBtn}
+                                    className="w-4"
+                                />
+                            </Button>
+                        </div>
+                    </CardFooter>
+                </Card>
+            )}{" "}
+        </>
     );
 };
 

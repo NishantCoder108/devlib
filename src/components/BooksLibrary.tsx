@@ -1,48 +1,25 @@
-import { Button } from "@nextui-org/react";
-
-import AppNavbar from "./AppNavbar";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+// import { useAppDispatch } from "../app/hooks";
+import useSearchBooks from "../configs/hooks/useSearchBooks";
 import BooksCard from "./BooksCard";
-import { useEffect, useState } from "react";
-import { BookState, addBooks } from "../features/bookSlice";
+// import { useEffect, useState } from "react";
+// import { BookState, addBooks } from "../features/bookSlice";
+// import { Search_BOOKS_API } from "../constants";
 
 interface IQuery {
     query: string;
 }
 const BooksLibrary = ({ query }: IQuery) => {
-    // const allBooks = useAppSelector((state) => state.books.allBooks);
-    // console.log("All books in books library", allBooks);
-    const dispatch = useAppDispatch();
+    const books = useSearchBooks(query);
 
-    const [books, setBooks] = useState<BookState[]>([]);
-    const fetchBooks = async (query: string) => {
-        try {
-            const booksList = await fetch(
-                `https://www.dbooks.org/api/search/${query}`
-            );
-            const json = await booksList.json();
-
-            console.log("res_books_list", json);
-            setBooks(json.books);
-            dispatch(addBooks(json.books));
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    useEffect(() => {
-        fetchBooks(query);
-    }, [query]);
-    console.log("Books library books ", books);
-    // console.log("Books library all books ", allBooks);
-
-    // if (!books) {
-    //     return <p>Loading...</p>;
-    // }
+    if (!books)
+        return (
+            <p className="text-gray-900  px-[1.5rem] py-8">No Found Books 😔</p>
+        );
     return (
         <>
-            <div className="flex px-6 gap-4 items-center justify-between flex-wrap">
-                {books.length > 0
-                    ? books.map((item) => <BooksCard {...item} />)
+            <div className="flex px-6 gap-4 mt-12 items-center justify-between flex-wrap">
+                {books
+                    ? books.map((item) => <BooksCard key={item.id} {...item} />)
                     : "Not found"}
             </div>
         </>
