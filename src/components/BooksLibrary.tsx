@@ -13,7 +13,7 @@ const BooksLibrary = ({ query }: IQuery) => {
         );
     return (
         <>
-            <div className="flex px-6 gap-4 mt-12 items-center justify-between flex-wrap">
+            <div className="flex px-6 gap-4 mt-12 items-center sm:justify-between flex-wrap justify-center ">
                 {books
                     ? books.map((item) => <BooksCard key={item.id} {...item} />)
                     : "Not found"}
