@@ -4,7 +4,7 @@ import AppNavbar from "./AppNavbar";
 import AiPrompt from "./gpt/AiPrompt";
 
 const Homepage = () => {
-    const [text, setText] = useState("");
+    const [text, setText] = useState("javascript");
 
     const handleSearchText = (data: string) => {
         console.log("Homepage Search Text :-", data);
