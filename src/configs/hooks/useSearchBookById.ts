@@ -8,7 +8,7 @@ const useSearchBookById = (bookId: string) => {
         const data = await fetch(Search_BOOK_By_ID + "/" + bookId);
         const jsonData = await data.json();
 
-        console.log("Books List :- ", jsonData);
+        // console.log("Books List :- ", jsonData);
 
         setBookDetails(jsonData);
     };

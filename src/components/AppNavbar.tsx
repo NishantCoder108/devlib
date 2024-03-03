@@ -17,7 +17,7 @@ import { logoutUser } from "../features/authSlice";
 import { useAppDispatch } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import SearchByAi from "./SearchByAi";
+import SearchByAi from "./gpt/SearchByAi";
 
 interface ISearchData {
     searchText: string;

@@ -12,7 +12,7 @@ import { BookState } from "../features/bookSlice";
 import useSearchBookById from "../configs/hooks/useSearchBookById";
 
 const BooksCard = (props: BookState) => {
-    console.log("Bookcard Props:- ", props);
+    // console.log("Bookcard Props:- ", props);
 
     const book = useSearchBookById(props.id) as BookState;
 
@@ -20,7 +20,7 @@ const BooksCard = (props: BookState) => {
 
     const { authors, image, pages, title, download, id } = book;
 
-    console.log({ book });
+    // console.log({ book });
 
     return (
         <>

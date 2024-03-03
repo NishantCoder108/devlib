@@ -1,7 +1,7 @@
 import { Button, Tooltip, useDisclosure } from "@nextui-org/react";
-import AiIcon from "../assets/svg/ai.svg";
-import AppModal from "./common/AppModal";
-import CredentilsFormForAi from "./CredentilsFormForAi";
+import AiIcon from "../../assets/svg/ai.svg";
+import AppModal from "../common/AppModal";
+import CredentilsFormForAi from "../CredentilsFormForAi";
 
 const SearchByAi = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
