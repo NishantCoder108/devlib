@@ -1,19 +1,14 @@
-import {
-    Modal,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Button,
-} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/react";
+import { ReactNode } from "react";
 
 interface IModal {
     isOpen: boolean;
     onOpen?: () => void;
     onClose: () => void;
-    title: string | null;
+    title?: string | null;
+    modalBody: ReactNode;
 }
-const AppModal = ({ isOpen, onClose, title }: IModal) => {
+const AppModal = ({ isOpen, onClose, title, modalBody }: IModal) => {
     return (
         <>
             <Modal
@@ -23,39 +18,12 @@ const AppModal = ({ isOpen, onClose, title }: IModal) => {
                 onClose={onClose}
             >
                 <ModalContent>
-                    {/* {(onClose) => ( */}
                     <>
                         <ModalHeader className="flex flex-col gap-1">
                             {title}
                         </ModalHeader>
-                        <ModalBody>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nullam pulvinar risus non risus
-                                hendrerit venenatis. Pellentesque sit amet
-                                hendrerit risus, sed porttitor quam.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nullam pulvinar risus non risus
-                                hendrerit venenatis. Pellentesque sit amet
-                                hendrerit risus, sed porttitor quam.
-                            </p>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button
-                                color="danger"
-                                variant="light"
-                                onPress={onClose}
-                            >
-                                Close
-                            </Button>
-                            <Button color="primary" onPress={onClose}>
-                                Submit
-                            </Button>
-                        </ModalFooter>
+                        <ModalBody>{modalBody}</ModalBody>
                     </>
-                    {/* )} */}
                 </ModalContent>
             </Modal>
         </>
