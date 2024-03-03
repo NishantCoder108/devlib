@@ -1,18 +1,28 @@
 import { Button, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
+import { useAppDispatch } from "../app/hooks";
+import { addAiCredential } from "../features/aiCredentialSlice";
 
 interface ICredentialsForAi {
     openAiKey: string;
 }
-const CredentilsFormForAi = () => {
+interface IProps {
+    onClose: () => void;
+}
+const CredentilsFormForAi = ({ onClose }: IProps) => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<ICredentialsForAi>();
 
+    const dispatch = useAppDispatch();
+
     const handleFormSubmit = handleSubmit((data) => {
         console.log("Credential Form Data", data);
+        const trimData = data.openAiKey.trim();
+        dispatch(addAiCredential(trimData));
+        onClose();
     });
 
     console.log(errors);

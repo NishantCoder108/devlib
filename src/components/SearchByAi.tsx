@@ -13,7 +13,7 @@ const SearchByAi = () => {
     return (
         <div>
             <AppModal
-                modalBody={<CredentilsFormForAi />}
+                modalBody={<CredentilsFormForAi onClose={onClose} />}
                 title={"Integrate Your App With Ai"}
                 isOpen={isOpen}
                 onClose={onClose}
