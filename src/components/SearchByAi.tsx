@@ -1,6 +1,7 @@
 import { Button, Tooltip, useDisclosure } from "@nextui-org/react";
 import AiIcon from "../assets/svg/ai.svg";
 import AppModal from "./common/AppModal";
+import CredentilsFormForAi from "./CredentilsFormForAi";
 
 const SearchByAi = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -8,9 +9,11 @@ const SearchByAi = () => {
     const handleOpen = () => {
         onOpen();
     };
+
     return (
         <div>
             <AppModal
+                modalBody={<CredentilsFormForAi />}
                 title={"Integrate Your App With Ai"}
                 isOpen={isOpen}
                 onClose={onClose}
