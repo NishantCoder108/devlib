@@ -9,6 +9,12 @@ A web application for book recommendations powered by AI. Users can ask for book
 
 [devlib.](https://devlib108.vercel.app/)
 
+
+## Demo 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/R4RfPtBuNRQ?si=AJGc-ilprrcdhFNx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 ## Technologies Used
 
 - **Frontend**: React.js, TypeScript, NextUi, Tailwind CSS
@@ -41,12 +47,16 @@ To get a local copy up and running, follow these simple steps:
    ```sh
    npm run dev
    ```
+
+
+
+
 <!--
 ## Demo
 
 Check out this short video to see the app in action:
 
-[![Demo Video](https://example.com/demo-video-thumbnail.png)](https://example.com/demo-video.mp4)
+[![Demo Video](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)](https://youtu.be/R4RfPtBuNRQ)
 
 -->
 ## Screenshots
