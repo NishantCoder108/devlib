@@ -1,34 +1,67 @@
-Live on :👉👉👉   [devlib.](https://devlib108.vercel.app/)
+# AI-Based Books Library
+
+A web application for book recommendations powered by AI. Users can ask for book recommendations based on their interests and preferences, and the app provides personalized suggestions. Users can also download the recommended books.
+
 <!--
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
+![Demo Image](https://example.com/demo-image.png)
 -->
+## Live Link
+
+[devlib.](https://devlib108.vercel.app/)
+
+## Technologies Used
+
+- **Frontend**: React.js, TypeScript, NextUi, Tailwind CSS
+- **State Management**: Redux Toolkit
+- **Authentication**: Firebase Authentication
+- **Design**: Figma for UI/UX design
+- **Deployment**: Vercel
+- **AI Integration**: OpenAI for book recommendations
+
+## Features
+
+- **AI Book Recommendations**: Get personalized book recommendations based on your preferences.
+- **Download Books**: Download recommended books directly from the app.
+- **User Authentication**: Securely authenticate users using Firebase Authentication.
+- **Responsive Design**: Fully responsive design for a seamless experience on all devices.
+
+## Getting Started
+
+To get a local copy up and running, follow these simple steps:
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/NishantCoder108/devlib.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the development server
+   ```sh
+   npm run dev
+   ```
+<!--
+## Demo
+
+Check out this short video to see the app in action:
+
+[![Demo Video](https://example.com/demo-video-thumbnail.png)](https://example.com/demo-video.mp4)
+
+
+## Screenshots
+
+![Screenshot 1](https://example.com/screenshot1.png)
+![Screenshot 2](https://example.com/screenshot2.png)
+-->
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
