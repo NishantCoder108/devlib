@@ -10,9 +10,10 @@ A web application for book recommendations powered by AI. Users can ask for book
 [devlib.](https://devlib108.vercel.app/)
 
 
-## Demo 
+## Demo Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/R4RfPtBuNRQ?si=AJGc-ilprrcdhFNx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![YouTube Video](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)](https://www.youtube.com/watch?v=R4RfPtBuNRQ)
+
 
 
 ## Technologies Used
