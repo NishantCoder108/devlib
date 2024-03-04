@@ -48,12 +48,13 @@ Check out this short video to see the app in action:
 
 [![Demo Video](https://example.com/demo-video-thumbnail.png)](https://example.com/demo-video.mp4)
 
-
+-->
 ## Screenshots
 
-![Screenshot 1](https://example.com/screenshot1.png)
-![Screenshot 2](https://example.com/screenshot2.png)
--->
+![Devlib Login](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)
+![Devlib Home](https://github.com/NishantCoder108/devlib/blob/master/devlib_home.png)
+![Devlib Integration](https://github.com/NishantCoder108/devlib/blob/master/devlib_integrateai.png)
+
 ## Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
