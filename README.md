@@ -5,52 +5,51 @@ A web application for book recommendations powered by AI. Users can ask for book
 <!--
 ![Demo Image](https://example.com/demo-image.png)
 -->
+
 ## Live Link
 
 [devlib.](https://devlib108.vercel.app/)
 
+## Read Blog 👇
+
+[Ai Based books library](https://nishantcoder.gumroad.com/l/ai-based-books-library?layout=profile)
 
 ## Demo Video
 
 [![YouTube Video](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)](https://www.youtube.com/watch?v=R4RfPtBuNRQ)
 
-
-
 ## Technologies Used
 
-- **Frontend**: React.js, TypeScript, NextUi, Tailwind CSS
-- **State Management**: Redux Toolkit
-- **Authentication**: Firebase Authentication
-- **Design**: Figma for UI/UX design
-- **Deployment**: Vercel
-- **AI Integration**: OpenAI for book recommendations
+-   **Frontend**: React.js, TypeScript, NextUi, Tailwind CSS
+-   **State Management**: Redux Toolkit
+-   **Authentication**: Firebase Authentication
+-   **Design**: Figma for UI/UX design
+-   **Deployment**: Vercel
+-   **AI Integration**: OpenAI for book recommendations
 
 ## Features
 
-- **AI Book Recommendations**: Get personalized book recommendations based on your preferences.
-- **Download Books**: Download recommended books directly from the app.
-- **User Authentication**: Securely authenticate users using Firebase Authentication.
-- **Responsive Design**: Fully responsive design for a seamless experience on all devices.
+-   **AI Book Recommendations**: Get personalized book recommendations based on your preferences.
+-   **Download Books**: Download recommended books directly from the app.
+-   **User Authentication**: Securely authenticate users using Firebase Authentication.
+-   **Responsive Design**: Fully responsive design for a seamless experience on all devices.
 
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps:
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/NishantCoder108/devlib.git
-   ```
+    ```sh
+    git clone https://github.com/NishantCoder108/devlib.git
+    ```
 2. Install NPM packages
-   ```sh
-   npm install
-   ```
+    ```sh
+    npm install
+    ```
 3. Start the development server
-   ```sh
-   npm run dev
-   ```
-
-
-
+    ```sh
+    npm run dev
+    ```
 
 <!--
 ## Demo
@@ -60,6 +59,7 @@ Check out this short video to see the app in action:
 [![Demo Video](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)](https://youtu.be/R4RfPtBuNRQ)
 
 -->
+
 ## Screenshots
 
 ![Devlib Login](https://github.com/NishantCoder108/devlib/blob/master/devlib_login.png)
@@ -75,5 +75,3 @@ Contributions are what make the open-source community such an amazing place to l
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
